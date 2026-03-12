@@ -1,10 +1,10 @@
-M5 Sales Forecasting with Machine Learning
+# M5 Sales Forecasting with Machine Learning
 
-Overview
+## Overview
 
 This project builds machine learning models to predict daily retail sales using the M5 Forecasting dataset. The objective is to compare multiple regression models and improve prediction accuracy through feature engineering and hyperparameter tuning.
 
-Dataset
+## Dataset
 
 The project uses the M5 Forecasting dataset, which contains historical Walmart sales data.
 
@@ -15,7 +15,7 @@ Files used:
 
 Key identifiers include item_id, dept_id, cat_id, store_id, and state_id. The target variable is sales.
 
-Data Processing
+## Data Processing
 
 The following preprocessing and feature engineering steps were applied:
 	•	Merged sales data with calendar and price information
@@ -27,7 +27,7 @@ The following preprocessing and feature engineering steps were applied:
 	•	Encoded categorical variables using LabelEncoder
 	•	Filled missing numeric values with 0
 
-Models
+## Models
 
 The following regression models were trained and compared:
 	•	Linear Regression
@@ -36,15 +36,16 @@ The following regression models were trained and compared:
 	•	XGBoost Regressor
 	•	LightGBM Regressor
 
+
 All models were implemented using a scikit-learn pipeline that includes preprocessing.
 
-Hyperparameter Tuning
+## Hyperparameter Tuning
 
 The two best-performing models were further optimized using RandomizedSearchCV:
 	•	LightGBM
 	•	Gradient Boosting
 
-Evaluation
+### Evaluation
 
 Models were evaluated using:
 	•	Mean Absolute Error (MAE)
@@ -52,10 +53,10 @@ Models were evaluated using:
 
 Final results on the test set:
 
-Model Performance
+### Model Performance
 
 Baseline Model Comparison
-
+#### Evaluated on 100,000 sample rows
 Model	                MAE	                                 RMSE
 LightGBM	            0.9876                             	2.7358
 Gradient Boosting    	0.9983	                            2.7452
@@ -64,11 +65,18 @@ Linear Regression	    1.0231                            	2.7787
 XGBoost              	0.9884                            	2.8738
 
 Tuned Model Performance
-
+#### Evaluated on 100,000 sample rows
 Model	                             MAE
 Tuned LightGBM	                   0.806
+Tuned Gradient Boosting            0.821
 
-LightGBM achieved the best overall performance, reducing the MAE significantly compared to the baseline models.
+#### Evaluated on Full unseen test set
+Model                   MAE                 RMSE
+LightGBM                0.9853              2.7735
+Gradient Boosting       0.9909              2.8246
+
+
+After hyperparameter tuning, LightGBM achieved the best overall performance, reducing the MAE significantly compared to the baseline models.
 
 Technologies:
 Python, Pandas, NumPy, Scikit-learn, LightGBM, XGBoost, Matplotlib
